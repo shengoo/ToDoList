@@ -46,7 +46,12 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToList(segue:UIStoryboardSegue){
-        
+        var source = segue.sourceViewController as AddToDoItemViewController
+        var todoItem:ToDoItem? = source.todoItem
+        if(todoItem != nil){
+            toDoItems.append(todoItem!)
+            tableView.reloadData()
+        }
     }
     
     func loadInitialData(){
